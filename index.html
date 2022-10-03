@@ -76,6 +76,12 @@
         var r1;
         var frame=document.querySelector(".o");
         var bxnm;
+        let arr = [];
+while(arr.length <= ships){
+    let rand = Math.floor(Math.random() * size*size) + 1;
+    if(arr.indexOf(r) === -1) arr.push(rand);
+}
+console.log(arr);
         for(let f=0;f<size;f++){
            
         r1=document.createElement("div");
@@ -84,16 +90,29 @@
             frame.appendChild(r1);
           for(let i=1;i<=size;i++){
               bxnm=i+(f*size);
+            if(arr[f]==bxnm) 
             r1.innerHTML+=`<form class="box${bxnm}"><i class="fa-light fa-ship">${bxnm}</i></form>`
+            else
+            r1.innerHTML+=`<form class="box${bxnm}"><i class="fa-light fa-ship"></i></form>`
             }
            if(f==size-1){
                alert(document.querySelector(".box64").innerHTML);
            }
           //r.innerHTML+=`<div class="break"><div/>`
-        }
+        }/* let arr = [];
+while(arr.length < size*size){
+    let rand = Math.floor(Math.random() * ships) + 1;
+    if(arr.indexOf(r) === -1) arr.push(rand);
+}
+console.log(arr);
+for(let x=0;x<size*size;x++){
+    if(arr[x]==document.querySelector(`.box${bxnm}`))
+}
+*/
         document.querySelectorAll("form").forEach(form => form.addEventListener('click',clickfunc))
         function clickfunc(event){
             console.log(event.target)
+        if(event.target.innerHTML!="")    
         console.log("hello");
         }
     </script>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height:100%;
+            width:100%;
+        }
+        .o {
+            background-color: gray;
+            height:100%;
+            width:60%;
+            flex-direction: column;
+            display:inline-flex;
+
+
+        }
+       
+       
+        form{
+            height:80%;
+            width:100%;
+            margin:0px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: steelblue;
+            border:2px solid green;
+            display:inline-block;
+            position: relative;
+        }
+       
+       
+        span {
+            background-color: green;
+            position:absolute;
+            display:block;
+            width: 0px;
+            height:0px;
+            border:0px solid blue;
+        }
+        frame{
+            
+            position:relative;
+        }
+        .r1{
+            height:12.9%;
+            width:70%;
+            background-color:greenyellow;
+           /*  
+           Uncomment this line to see the structure of grid
+           border:1px solid whitesmoke; */
+            position:static;
+            padding:0px;
+            margin:0px;
+            display:inline-flex;
+        }
+        i{
+            width:5%;
+            height:5%;
+            background-color:teal;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div class="o"></div>
+    <script>
+        var size=8;
+        var dec=(size<16) ? 0.25:0.5;
+        var ships=size*size-((size*size)*dec);
+        var r=document.querySelector("#in");
+        var r1;
+        var frame=document.querySelector(".o");
+        var bxnm;
+        for(let f=0;f<size;f++){
+           
+        r1=document.createElement("div");
+        r1.className="r1";
+        r1.style.height=(size>8)?"6.25%":"12.9%";
+            frame.appendChild(r1);
+          for(let i=1;i<=size;i++){
+              bxnm=i+(f*size);
+            r1.innerHTML+=`<form class="box${bxnm}"><i class="fa-light fa-ship">${bxnm}</i></form>`
+            }
+           if(f==size-1){
+               alert(document.querySelector(".box64").innerHTML);
+           }
+          //r.innerHTML+=`<div class="break"><div/>`
+        }
+        document.querySelectorAll("form").forEach(form => form.addEventListener('click',clickfunc))
+        function clickfunc(event){
+            console.log(event.target)
+        console.log("hello");
+        }
+    </script>
+</body>
+</html>

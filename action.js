@@ -61,7 +61,7 @@ r1.style.height=(size>8)?"6.25%":"12.9%";
     }
 }
    if(f==size-1){
-       alert(document.querySelector(".box64").innerHTML);
+       //alert(document.querySelector(".box64").innerHTML);
    }
   //r.innerHTML+=`<div class="break"><div/>`
 }
@@ -80,17 +80,17 @@ function clickfunc(event){
     op=event.target.children[0].style.opacity;
     cs=event.target.children;
     console.log(event.target.children[0])
-    if((event.target.children[0].style.visibility != 'visible') && (event.target.children[0].style.opacity!="0")){
+    if(event.target.children[0].style.visibility != 'visible'){
     event.target.children[0].style.visibility = 'visible'
     console.log(typeof parseFloat(event.target.children[0].style.opacity));
     console.log(event.target.children[0].style.opacity);
     usrscr+=5;
     cannbls--;
     document.querySelector("span").innerHTML="You hit the ship and "+cannbls+" cannonballs are left";
-    alert(cannbls)
+    //alert(cannbls)
     //console.log('opacity', window.getComputedStyle(cs).opacity);
      }
-  else if(event.target.children[0].style.opacity != "0.8"){
+  else if(event.target.children[0].style.opacity != "0.8" && event.target.children[0].style.opacity!='0.1'){
     event.target.children[0].style.opacity="0.8"
     console.log(typeof event.target.children[0].style.opacity);
     usrscr++;
@@ -100,23 +100,26 @@ function clickfunc(event){
   } 
    else if(event.target.children[0].style.opacity == "0.8"){
 
-    event.target.children[0].style.opacity="0.0"
+    event.target.children[0].style.opacity="0.1"
     usrscr++;
     cannbls--;
     document.querySelector("span").innerHTML="You hit the ship and "+cannbls+" cannonballs are left";
-    alert(cannbls+ " opacity "+event.target.children[0].style.opacity)
+    //alert(cannbls+ " opacity "+event.target.children[0].style.opacity)
    }
     if(cannbls==0){
-    document.querySelector("span").innerHTML="Your scrore is "+usrscr;
+    document.querySelector("span").innerHTML+=" and your scrore is "+usrscr;
   }
     //console.log(event.target.i.sytle.visibility)
   }
-  else{
+  else if (event.target.innerHTML==""){
 console.log("missed the hit");
-event.target.innerHTML="missed the hit"
+event.target.innerHTML="missed the hit "
 cannbls--;
-document.querySelector("span").innerHTML="You missed the hit";
-alert(cannbls)
+document.querySelector("span").innerHTML="You missed the hit and "+cannbls+" cannonballs are left";
+if(cannbls==0){
+  document.querySelector("span").innerHTML+=" and your score is "+usrscr;
+}
+
   }
  
 }

@@ -7,7 +7,7 @@ var dec=(size<=8) ? 0.75:0.5;
 var ships=(size*size)*dec;
 var r=document.querySelector("#in");
 var r1;
-var cannbls=5;
+var cannbls=10;
 var bxnm;
 
 var usrscr=0;
@@ -24,6 +24,10 @@ db.children[0].setAttribute("value","0");
 document.querySelector("select").value=""
 var door=false;
 db=document.createElement("span");
+difficulty.appendChild(db);
+db=document.createElement("button");
+db.innerHTML="Reset"
+db.setAttribute("onclick","reset()")
 difficulty.appendChild(db);
 function func(){
   door=true;
@@ -122,4 +126,12 @@ if(cannbls==0){
 
   }
  
+}
+function reset(){
+  document.querySelector("span").innerHTML="";
+  document.querySelector("select").value=""
+  document.querySelector("select").disabled=false
+  document.querySelector("svg").visibility=false
+  document.querySelectorAll("form").forEach(form => form.innerHTML="")
+  
 }
